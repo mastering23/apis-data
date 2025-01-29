@@ -1,15 +1,29 @@
 <html>
-  <head>
-    <title>
-      Apis Testing  
-    </title>
-  </head>
+<head>
+    <title>Apis Testing</title>
+</head>
   <body>
-    <h2> Get & Display Json Data </h2>
-    <hr>
-    <h3>Users : </h1>
+    
+<h2> Get & Display Json Data </h2><hr>
+<h3>Users :</h3>
+<ul></ul>
+
     <script>
-      
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    data.forEach(user => {
+      const markup = `<li>${user.name}</li>`;
+      document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
     </script>
-  </body>
+ 
+
+</body>
 </html>
